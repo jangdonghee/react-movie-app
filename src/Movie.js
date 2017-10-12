@@ -12,20 +12,20 @@ class Movie extends Component {
     render() {
         return (
             <div className="Movie">
-                <div className="Movie__Columns">
+                <div className="Movie__Column">
                     <MoviePoster poster={this.props.poster}/>
                 </div>
-                <div className="Movie__Columns">
+                <div className="Movie__Column">
                     <h1>{this.props.title}</h1>
                     <div className="Movie__Genres">
                         {this.props.genres.map((genre, index) => {
                             return <MovieGenre genre={genre} key={index} />
                         })}
                     </div>
-                    <div className="Movie_Synopsis">
+                    <div className="Movie__Synopsis">
                         <LinesEllipsis
                             text={this.props.synopsis}
-                            maxLine="3"
+                            maxLine="4"
                             ellipsis="..."
                             trimRight
                             basedOn="letters"
@@ -46,7 +46,7 @@ const MovieGenre = ({genre}) => {
 class MoviePoster extends Component{
     render(){
       return(
-        <img src={this.props.poster} alt={this.props.title} title={this.props.title} className="Movie_Poster"/>
+        <img src={this.props.poster} alt={this.props.title} title={this.props.title} className="Movie__Poster"/>
       );
     }
 }
