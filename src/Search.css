@@ -1,0 +1,28 @@
+.Search__Wrap{
+    width:100%;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.Search__Box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+.Search__Box input[type="text"]{
+    width: 50%;
+    height: 30px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    padding: 5px;
+}
+.Search__Type{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

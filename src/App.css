@@ -1,3 +1,7 @@
+
+@font-face{font-family:NanumSquareB;font-weight:400;src:url(https://ssl.pstatic.net/static.land/static/space/20170831/fonts/NanumSquareB.eot);src:url(https://ssl.pstatic.net/static.land/static/space/20170831/fonts/NanumSquareB.eot?#iefix) format("embedded-opentype"),url(https://ssl.pstatic.net/static.land/static/space/20170831/fonts/NanumSquareB.woff2) format("woff2"),url(https://ssl.pstatic.net/static.land/static/space/20170831/fonts/NanumSquareB.woff) format("woff"),url(https://ssl.pstatic.net/static.land/static/space/20170831/fonts/NanumSquareB.ttf) format("truetype")}
+@font-face{font-family:NanumBarunGothic;font-style:normal;src:url(https://ssl.pstatic.net/static.land/static/space/20170831/fonts/NanumBarunGothic.eot);src:url(https://ssl.pstatic.net/static.land/static/space/20170831/fonts/NanumBarunGothic.eot?#iefix) format("embedded-opentype"),url(https://ssl.pstatic.net/static.land/static/space/20170831/fonts/NanumBarunGothic.woff2) format("woff2"),url(https://ssl.pstatic.net/static.land/static/space/20170831/fonts/NanumBarunGothic.woff) format("woff"),url(https://ssl.pstatic.net/static.land/static/space/20170831/fonts/NanumBarunGothic.svg#false) format("svg");font-weight:300}
+
 .App {
   padding:50px;
   display: flex;
@@ -10,4 +14,5 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin-top:50px;
 }
