@@ -77,13 +77,14 @@ class App extends Component {
   }
 
   _searchType = (searchType, searchValue) => {
-    this.setState({
-      searchType: searchType,
-      searchValue: searchValue
-    },function(){
-      this._getMovies();
-    }
-  );
+    this.setState(
+      {
+        searchType: searchType,
+        searchValue: searchValue
+      },function(){
+        this._getMovies();
+      }
+    );
   };
 
   render() {
