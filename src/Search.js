@@ -7,12 +7,14 @@ class Search extends Component{
         super(props);
         this.state = {
             title: "",
-            searchType: "",
-            searchValue: ""
+            params: this.props.params
         }
 
         this._searchTitle = this._searchTitle.bind(this);
         this._searchType = this._searchType.bind(this);
+
+        console.log("aaa", this.props.params)
+        console.log("bbb", this.state.params.genre)
     }
 
     _searchTitle = (e) => {
@@ -26,17 +28,20 @@ class Search extends Component{
     }
 
     _searchType = (e) => {
-        this.setState(
-            {
-                searchType: e.target.name,
-                searchValue: e.target.value
-            }, function (){
-                this.props.onSearchType(this.state.searchType, this.state.searchValue)
+            this.setState({
+                ...this.state, 
+                params: {
+                    ...this.state.params,
+                    [e.target.name]: e.target.value
+                }
+            }, () => {
+                this.props.onSearchType(this.state.params) 
             }
         );
     }
 
     render(){
+        
         return(
             <div className="Search__Wrap">
                 <div className="Search__Box">
@@ -54,7 +59,7 @@ class Search extends Component{
                     </div>
                     <div>
                         <p>Genre</p>
-                        <select name="genre">
+                        <select name="genre" onChange={this._searchType}>
                             <option value="all">All</option>
                             <option value="action">Action</option>
                             <option value="adventure">Adventure</option>
@@ -86,7 +91,7 @@ class Search extends Component{
                     </div>
                     <div>
                         <p>Genre</p>
-                        <select name="rating">
+                        <select name="rating" onChange={this._searchType}>
                             <option value="0">All</option>
                             <option value="9">9+</option>
                             <option value="8">8+</option>
@@ -101,7 +106,7 @@ class Search extends Component{
                     </div>
                     <div>
                         <p>Order By</p>
-                        <select name="order_by">
+                        <select name="order_by" onChange={this._searchType}>
                             <option value="latest">Latest</option>
                             <option value="oldest">Oldest</option>
                             <option value="seeds">Seeds</option>
@@ -120,9 +125,7 @@ class Search extends Component{
 }
 
  Search.defaultProp = {
-    title: "",
-    searchType: "",
-    searchValue: ""
+    title: ""
 }
 
 export default Search;

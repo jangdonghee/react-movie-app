@@ -9,8 +9,13 @@ class App extends Component {
 
     this.state = {
       searchTitle: "",
-      searchType: "quality",
-      searchValue: "All"
+      params: {
+        sort_by: "down_count",
+        quality: "all",
+        genre: "all",
+        rating: "all",
+        order_by: "latest"
+      }
     }
     
     this._searchTitle = this._searchTitle.bind(this);
@@ -22,28 +27,26 @@ class App extends Component {
     this._getMovies();
   }
 
-  componentWillReceiveProps(nextProps){
-    // console.log("nextProps.searchValue : ", nextProps.searchValue);
-    // this.setState({
-    //   searchType: nextProps.searchType,
-    //   searchValue: nextProps.searchValue
-    // });
-    // this._getMovies();
-  }
-
   _getMovies = async () => {
     const movies = await this._callApi();
     //console.log("movies ::: " + movies)
     this.setState({
       movies: movies
     });
-    console.log("searchType // ::: " + this.state.searchType);
-    console.log("searchValue ::: " + this.state.searchValue);
+  }
+
+  _getQueryParams = (params) => {
+    return Object.keys(params).map(k => k + "=" + params[k]).join("&");
   }
 
   _callApi = () => {
-    console.log('url ::: https://yts.ag/api/v2/list_movies.json?sort_by=down_count&'+this.state.searchType+"="+this.state.searchValue);
-    return fetch('https://yts.ag/api/v2/list_movies.json?sort_by=down_count&'+this.state.searchType+"="+this.state.searchValue)
+    const url = "https://yts.ag/api/v2/list_movies.json";
+    let params = this.state.params;
+
+    console.log("url", url)
+    console.log("this.state.params", this.state.params)
+
+    return fetch(url + "?" + this._getQueryParams(params))
     .then(response => response.json())
     .then(json => json.data.movies)
     .catch((err) => {console.log("err")})
@@ -76,11 +79,10 @@ class App extends Component {
     });
   }
 
-  _searchType = (searchType, searchValue) => {
+  _searchType = (params) => {
     this.setState(
       {
-        searchType: searchType,
-        searchValue: searchValue
+        params: params
       },function(){
         this._getMovies();
       }
@@ -90,7 +92,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Search onSearchTitle={this._searchTitle} onSearchType={this._searchType}/>
+        <Search onSearchTitle={this._searchTitle} onSearchType={this._searchType} params={this.state.params}/>
         <div className={this.state.movies ? "App" : "App--loading"}>
         {
           //this.state.movies ? this._renderMovies() : "Loading.."
