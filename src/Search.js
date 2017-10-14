@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import './Search.css';
+import './Search.scss';
 
 class Search extends Component{
     constructor(props){
@@ -11,10 +11,14 @@ class Search extends Component{
         }
 
         this._searchTitle = this._searchTitle.bind(this);
-        this._searchType = this._searchType.bind(this);
+        this._searchType = this._searchType.bind(this);        
 
         console.log("aaa", this.props.params)
         console.log("bbb", this.state.params.genre)
+    }
+
+    componentDidMount(){
+        this.refs.txtSearch.focus();
     }
 
     _searchTitle = (e) => {
@@ -45,7 +49,7 @@ class Search extends Component{
         return(
             <div className="Search__Wrap">
                 <div className="Search__Box">
-                    <input type="text" placeholder="Movie Search" onChange={this._searchTitle} />
+                    <input type="text" ref="txtSearch" placeholder="Movie Search" onChange={this._searchTitle} />
                 </div>
                 <div className="Search__Type">
                     <div className="Search__Type__Item">

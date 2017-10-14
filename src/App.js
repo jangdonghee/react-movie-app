@@ -56,7 +56,7 @@ class App extends Component {
     movieList = movieList.filter(
       (movie) => {
         if(this.state.searchTitle != ""){
-          return movie.title_english.indexOf(this.state.searchTitle) > -1;
+          return movie.title_english.toUpperCase().indexOf(this.state.searchTitle.toUpperCase()) > -1;
         }else{
           return this.state.movies;
         }
