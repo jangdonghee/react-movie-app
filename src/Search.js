@@ -11,10 +11,7 @@ class Search extends Component{
         }
 
         this._searchTitle = this._searchTitle.bind(this);
-        this._searchType = this._searchType.bind(this);        
-
-        console.log("aaa", this.props.params)
-        console.log("bbb", this.state.params.genre)
+        this._searchType = this._searchType.bind(this);
     }
 
     componentDidMount(){
@@ -61,7 +58,7 @@ class Search extends Component{
                             <option value="3D">3D</option>
                         </select>
                     </div>
-                    <div>
+                    <div className="Search__Type__Item">
                         <p>Genre</p>
                         <select name="genre" onChange={this._searchType}>
                             <option value="all">All</option>
@@ -93,7 +90,7 @@ class Search extends Component{
                             <option value="western">Western</option>
                         </select>
                     </div>
-                    <div>
+                    <div className="Search__Type__Item">
                         <p>Genre</p>
                         <select name="rating" onChange={this._searchType}>
                             <option value="0">All</option>
@@ -108,7 +105,7 @@ class Search extends Component{
                             <option value="1">1+</option>
                         </select>
                     </div>
-                    <div>
+                    <div className="Search__Type__Item">
                         <p>Order By</p>
                         <select name="order_by" onChange={this._searchType}>
                             <option value="latest">Latest</option>
